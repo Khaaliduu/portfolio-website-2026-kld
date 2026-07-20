@@ -64,11 +64,7 @@ revealOnScroll(); // Call the function on page load to reveal elements that are 
 
 
 
-
-
-
-
-
+// =================================================================================================================
 
 
 
@@ -168,3 +164,9 @@ skillCards.forEach((card) => {
     });
 
 });
+
+
+
+
+
+

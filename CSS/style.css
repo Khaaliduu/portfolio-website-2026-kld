@@ -642,54 +642,6 @@ button{
 }
 
 
-/*=========================================
- FLOAT ANIMATION
-=========================================*/
-/*
-@keyframes float{
-
-    0%{
-
-        transform:translateY(0px);
-
-    }
-
-    50%{
-
-        transform:translateY(-15px);
-
-    }
-
-    100%{
-
-        transform:translateY(0px);
-
-    }
-
-}
-
-.card-1{
-
-    animation:float 4s ease-in-out infinite;
-
-}
-
-.card-2{
-
-    animation:float 5s ease-in-out infinite;
-
-}
-
-.card-3{
-
-    animation:float 6s ease-in-out infinite;
-
-}
-.experience-card{
-  animation:float 6s ease-in-out infinite;
-}
-
- */
 
 
 /*=========================================
@@ -889,4 +841,3 @@ button{
     color:#fff;
     transform:translateY(-5px);
 }
-/*  */

@@ -1,0 +1,257 @@
+/*=========================================
+  GLOBAL TRANSITIONS
+=========================================*/
+
+*{
+    transition:0.35s ease;
+}
+
+
+/*=========================================
+  FADE ANIMATIONS
+=========================================*/
+
+.fade-up{
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.fade-down{
+    opacity:0;
+    transform:translateY(-60px);
+}
+
+.fade-left{
+    opacity:0;
+    transform:translateX(-60px);
+}
+
+.fade-right{
+    opacity:0;
+    transform:translateX(60px);
+}
+
+.zoom-in{
+    opacity:0;
+    transform:scale(.85);
+}
+
+.reveal.active,
+.fade-up.active,
+.fade-down.active,
+.fade-left.active,
+.fade-right.active,
+.zoom-in.active{
+
+    opacity:1;
+    transform:translate(0) scale(1);
+
+}
+
+
+/*=========================================
+  FLOAT ANIMATION
+=========================================*/
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.card-1{
+
+    animation:floating 4s ease-in-out infinite;
+
+}
+
+.card-2{
+
+    animation:floating 5s ease-in-out infinite;
+
+}
+
+.card-3{
+
+    animation:floating 6s ease-in-out infinite;
+
+}
+
+.experience-card{
+
+    animation:floating 5s ease-in-out infinite;
+
+}
+
+.skill-card{
+
+    animation:floating 6s ease-in-out infinite;
+
+}
+
+.skill-card:nth-child(2){
+
+    animation-delay:.3s;
+
+}
+
+.skill-card:nth-child(3){
+
+    animation-delay:.6s;
+
+}
+
+.skill-card:nth-child(4){
+
+    animation-delay:.9s;
+
+}
+
+
+/*=========================================
+  GLOW ANIMATION
+=========================================*/
+
+@keyframes glow{
+
+    0%{
+
+        opacity:.15;
+
+    }
+
+    50%{
+
+        opacity:.35;
+
+    }
+
+    100%{
+
+        opacity:.15;
+
+    }
+
+}
+
+.hero-glow,
+.about-glow{
+
+    animation:glow 6s ease-in-out infinite;
+
+}
+
+
+/*=========================================
+  BUTTON HOVER
+=========================================*/
+
+.btn{
+
+    transition:.35s ease;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+/*=========================================
+  IMAGE HOVER
+=========================================*/
+
+.hero-image img,
+.about-image img{
+
+    transition:.5s ease;
+
+}
+
+.hero-image img:hover,
+.about-image img:hover{
+
+    transform:translateY(-10px) scale(1.02);
+
+}
+
+
+/*=========================================
+  CARD HOVER
+=========================================*/
+
+.floating-card,
+.skill-card,
+.info-item,
+.tools-grid span{
+
+    transition:.35s ease;
+
+}
+
+.floating-card:hover,
+.skill-card:hover,
+.info-item:hover,
+.tools-grid span:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+/*=========================================
+  ICON ROTATION
+=========================================*/
+
+.skill-icon i,
+.floating-card i{
+
+    transition:.4s ease;
+
+}
+
+.skill-card:hover .skill-icon i,
+.floating-card:hover i{
+
+    transform:rotate(12deg) scale(1.1);
+
+}
+
+
+/*=========================================
+  PROGRESS BAR
+=========================================*/
+
+.progress{
+
+    animation:progressLoad 2.2s ease;
+
+}
+
+@keyframes progressLoad{
+
+    from{
+
+        width:0;
+
+    }
+
+}
