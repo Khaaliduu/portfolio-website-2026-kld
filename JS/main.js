@@ -170,3 +170,169 @@ skillCards.forEach((card) => {
 
 
 
+
+
+
+/*=========================================
+  PROJECTS REVEAL ANIMATION
+=========================================*/
+
+const projectCards = document.querySelectorAll(".project-card");
+
+const projectObserver = new IntersectionObserver(
+
+(entries) => {
+
+    entries.forEach((entry) => {
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+            projectObserver.unobserve(entry.target);
+
+        }
+
+    });
+
+},
+
+{
+
+    threshold:0.2
+
+}
+
+);
+
+projectCards.forEach((card)=>{
+
+    projectObserver.observe(card);
+
+});
+
+
+/*=========================================
+  PROJECT CARD TILT EFFECT
+=========================================*/
+
+projectCards.forEach((card)=>{
+
+    card.addEventListener("mousemove",(e)=>{
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y-centerY)/18)*-1;
+
+        const rotateY = (x-centerX)/18;
+
+        card.style.transform = `
+        perspective(1000px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        translateY(-10px)
+        `;
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform="perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+
+    });
+
+});
+
+
+/*=========================================
+  PROJECT IMAGE PARALLAX
+=========================================*/
+
+projectCards.forEach((card)=>{
+
+    const image = card.querySelector("img");
+
+    card.addEventListener("mousemove",(e)=>{
+
+        const rect = card.getBoundingClientRect();
+
+        const moveX = (e.clientX-rect.left)/35;
+
+        const moveY = (e.clientY-rect.top)/35;
+
+        image.style.transform=`scale(1.08) translate(${moveX}px,${moveY}px)`;
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        image.style.transform="scale(1) translate(0,0)";
+
+    });
+
+});
+
+
+/*=========================================
+  PROJECT BUTTON RIPPLE
+=========================================*/
+
+const projectButtons=document.querySelectorAll(".project-icon");
+
+projectButtons.forEach((button)=>{
+
+    button.addEventListener("click",(e)=>{
+
+        const ripple=document.createElement("span");
+
+        ripple.classList.add("ripple");
+
+        const rect=button.getBoundingClientRect();
+
+        ripple.style.left=e.clientX-rect.left+"px";
+
+        ripple.style.top=e.clientY-rect.top+"px";
+
+        button.appendChild(ripple);
+
+        setTimeout(()=>{
+
+            ripple.remove();
+
+        },600);
+
+    });
+
+});
+
+
+/*=========================================
+  PROJECT STAGGER ANIMATION
+=========================================*/
+
+projectCards.forEach((card,index)=>{
+
+    card.style.transitionDelay=`${index * 0.15}s`;
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+

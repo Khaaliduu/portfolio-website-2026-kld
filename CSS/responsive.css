@@ -531,5 +531,253 @@
 
 
 
+/*=========================================
+  PROJECTS SECTION
+=========================================*/
+
+
+/* ==========================================
+   Laptop (992px)
+========================================== */
+
+@media (max-width:992px){
+
+    .projects-grid{
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+
+    }
+
+}
+
+
+/* ==========================================
+   Tablet (768px)
+========================================== */
+
+@media (max-width:768px){
+
+    .projects{
+
+        padding:90px 0;
+
+    }
+
+    .project-card{
+
+        border-radius:20px;
+
+    }
+
+    .project-image{
+
+        height:240px;
+
+    }
+
+    .project-content{
+
+        padding:25px;
+
+    }
+
+    .project-title{
+
+        font-size:1.3rem;
+
+    }
+
+    .project-description{
+
+        font-size:.95rem;
+
+    }
+
+    .project-tech{
+
+        gap:8px;
+
+    }
+
+    .project-tech span{
+
+        padding:7px 12px;
+
+        font-size:.8rem;
+
+    }
+
+    .project-icon{
+
+        width:50px;
+
+        height:50px;
+
+        font-size:1rem;
+
+    }
+
+}
+
+
+/* ==========================================
+   Mobile (576px)
+========================================== */
+
+@media (max-width:576px){
+
+    .projects-grid{
+
+        gap:25px;
+
+    }
+
+    .project-card{
+
+        border-radius:18px;
+
+    }
+
+    .project-image{
+
+        height:210px;
+
+    }
+
+    .project-content{
+
+        padding:20px;
+
+    }
+
+    .project-category{
+
+        font-size:.75rem;
+
+        padding:6px 14px;
+
+    }
+
+    .project-title{
+
+        font-size:1.15rem;
+
+    }
+
+    .project-description{
+
+        font-size:.9rem;
+
+        line-height:1.7;
+
+    }
+
+    .project-tech{
+
+        gap:8px;
+
+    }
+
+    .project-tech span{
+
+        font-size:.75rem;
+
+        padding:6px 10px;
+
+    }
+
+    .project-overlay{
+
+        gap:12px;
+
+    }
+
+    .project-icon{
+
+        width:45px;
+
+        height:45px;
+
+        font-size:.95rem;
+
+    }
+
+    .projects-button{
+
+        margin-top:45px;
+
+    }
+
+    .projects-button .btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+}
+
+
+/* ==========================================
+   Small Mobile (400px)
+========================================== */
+
+@media (max-width:400px){
+
+    .project-image{
+
+        height:180px;
+
+    }
+
+    .project-content{
+
+        padding:18px;
+
+    }
+
+    .project-title{
+
+        font-size:1rem;
+
+    }
+
+    .project-description{
+
+        font-size:.85rem;
+
+    }
+
+    .project-tech{
+
+        justify-content:center;
+
+    }
+
+    .project-tech span{
+
+        font-size:.72rem;
+
+    }
+
+    .project-icon{
+
+        width:40px;
+
+        height:40px;
+
+        font-size:.9rem;
+
+    }
+
+}
+
+
+
+
+
 
 
