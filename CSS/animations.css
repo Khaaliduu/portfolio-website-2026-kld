@@ -637,97 +637,99 @@
 =========================================*/
 
 .mobile-bottom-nav {
-    transition: all .4s cubic-bezier(.4, 0, .2, 1);
+    transition: background .4s ease, box-shadow .4s ease;
 }
 
-/* Individual navigation items */
-
-.mobile-bottom-nav .nav-link {
+.mobile-nav-link {
     position: relative;
+    isolation: isolate;
     overflow: hidden;
-    transition: 
+
+    transition:
         color .35s ease,
-        background .35s ease,
-        transform .4s cubic-bezier(.34, 1.56, .64, 1);
+        transform .4s cubic-bezier(.34, 1.56, .64, 1),
+        background .35s ease;
 }
 
-/* Icons */
+/* ICON */
 
-.mobile-bottom-nav .nav-link i {
+.mobile-nav-link i {
     display: inline-block;
     transition:
         transform .45s cubic-bezier(.34, 1.56, .64, 1),
         color .35s ease;
 }
 
-/* Labels */
+/* LABEL */
 
-.mobile-bottom-nav .nav-link span {
+.mobile-nav-link span {
     transition:
         opacity .3s ease,
         transform .35s ease;
 }
 
-/* Active item */
+/* ACTIVE LINK */
 
-.mobile-bottom-nav .nav-link.active {
+.mobile-nav-link.active {
     color: var(--primary);
     transform: translateY(-4px);
 }
 
-/* Active icon animation */
+/* ACTIVE ICON */
 
-.mobile-bottom-nav .nav-link.active i {
-    transform: translateY(-3px) scale(1.2);
-    animation: mobileIconBounce .45s ease;
+.mobile-nav-link.active i {
+    animation: mobileIconBounce .5s ease;
 }
 
-/* Active label */
+/* ACTIVE BACKGROUND */
 
-.mobile-bottom-nav .nav-link.active span {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Icon bounce */
-
-@keyframes mobileIconBounce {
-    0% {
-        transform: translateY(5px) scale(.8);
-    }
-
-    60% {
-        transform: translateY(-5px) scale(1.25);
-    }
-
-    100% {
-        transform: translateY(-3px) scale(1.2);
-    }
-}
-
-/* Active background indicator */
-
-.mobile-bottom-nav .nav-link::before {
+.mobile-nav-link::before {
     content: "";
+
     position: absolute;
-    width: 42px;
-    height: 42px;
+    inset: 3px 5px;
+
     border-radius: 14px;
     background: var(--primary);
+
     opacity: 0;
-    transform: scale(.5);
+    transform: scale(.7);
+
     transition:
         opacity .35s ease,
         transform .4s cubic-bezier(.34, 1.56, .64, 1);
+
     z-index: -1;
 }
 
-.mobile-bottom-nav .nav-link.active::before {
-    opacity: .13;
+.mobile-nav-link.active::before {
+    opacity: .15;
     transform: scale(1);
 }
 
-/* Respect reduced motion */
+/* ICON BOUNCE */
+
+@keyframes mobileIconBounce {
+    0% {
+        transform: translateY(4px) scale(.8);
+    }
+
+    60% {
+        transform: translateY(-6px) scale(1.25);
+    }
+
+    100% {
+        transform: translateY(-2px) scale(1.1);
+    }
+}
+
+/* CLICK EFFECT */
+
+.mobile-nav-link:active {
+    transform: scale(.9);
+}
+
+/* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
     .mobile-bottom-nav *,

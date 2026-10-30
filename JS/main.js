@@ -441,53 +441,85 @@ Sent from Khaalid CodeCraft Portfolio.
 
 
 
-
 /*=========================================
   MOBILE BOTTOM NAVIGATION
 =========================================*/
 
-const mobileNavLinks = document.querySelectorAll('.mobile-bottom-nav .nav-link');
-
-const mobileSections = document.querySelectorAll(
-    '#home, #about, #skills, #projects, #contact'
+const mobileNavLinks = document.querySelectorAll(
+    '.mobile-bottom-nav .mobile-nav-link'
 );
 
-const mobileNavObserver = new IntersectionObserver(
-    (entries) => {
+const mobileSections = document.querySelectorAll(
+    '#home, #about, #skills, #projects, #pricing, #contact'
+);
 
-        entries.forEach(entry => {
+let ticking = false;
 
-            if (entry.isIntersecting) {
+function updateMobileNavigation() {
 
-                const currentId = entry.target.getAttribute('id');
+    const referencePoint = window.innerHeight * 0.4;
 
-                mobileNavLinks.forEach(link => {
+    let currentSection = null;
+    let smallestDistance = Infinity;
 
-                    link.classList.remove('active');
+    mobileSections.forEach(section => {
 
-                    if (link.getAttribute('href') === `#${currentId}`) {
-                        link.classList.add('active');
-                    }
+        const rect = section.getBoundingClientRect();
 
-                });
+        // Section must be visible in the viewport
+        if (rect.top <= referencePoint && rect.bottom > referencePoint) {
 
+            const distance = Math.abs(rect.top);
+
+            if (distance < smallestDistance) {
+                smallestDistance = distance;
+                currentSection = section.id;
             }
+
+        }
+
+    });
+
+    // Update active navigation
+    if (currentSection) {
+
+        mobileNavLinks.forEach(link => {
+
+            const isActive =
+                link.getAttribute('href') === `#${currentSection}`;
+
+            link.classList.toggle('active', isActive);
 
         });
 
-    },
-    {
-        rootMargin: '-25% 0px -55% 0px',
-        threshold: 0
     }
-);
+}
 
-mobileSections.forEach(section => {
-    mobileNavObserver.observe(section);
+function requestNavigationUpdate() {
+
+    if (!ticking) {
+
+        window.requestAnimationFrame(() => {
+
+            updateMobileNavigation();
+            ticking = false;
+
+        });
+
+        ticking = true;
+    }
+}
+
+
+// Scroll detection
+window.addEventListener('scroll', requestNavigationUpdate, {
+    passive: true
 });
 
+window.addEventListener('resize', requestNavigationUpdate);
 
-// Smooth navigation click
+
+// Navigation click
 mobileNavLinks.forEach(link => {
 
     link.addEventListener('click', () => {
@@ -501,3 +533,9 @@ mobileNavLinks.forEach(link => {
     });
 
 });
+
+
+// Initial check
+window.addEventListener('load', updateMobileNavigation);
+
+updateMobileNavigation();
