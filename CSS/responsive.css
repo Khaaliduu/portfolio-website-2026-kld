@@ -781,3 +781,129 @@
 
 
 
+
+
+
+/* =========================================
+   MOBILE FLOATING BOTTOM NAVIGATION
+========================================= */
+
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media (max-width: 992px) {
+
+    /* Hide Desktop Header */
+    .header {
+        display: none;
+    }
+
+    /* Bottom Navigation */
+    .mobile-bottom-nav {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        bottom: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: calc(100% - 30px);
+        max-width: 480px;
+        min-height: 72px;
+
+        padding: 8px 5px;
+
+        background: rgba(15, 23, 42, 0.90);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        border: 1px solid rgba(255,255,255,0.10);
+        border-radius: 22px;
+
+        box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+
+        z-index: 9999;
+    }
+
+    .mobile-nav-link {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 5px;
+
+        min-width: 55px;
+        padding: 10px 8px;
+
+        color: #94A3B8;
+        text-decoration: none;
+
+        border-radius: 16px;
+
+        transition: all .35s ease;
+    }
+
+    .mobile-nav-link i {
+        font-size: 19px;
+        transition: all .35s ease;
+    }
+
+    .mobile-nav-link span {
+        font-size: 10px;
+        font-weight: 600;
+        transition: all .35s ease;
+    }
+
+    /* Active Navigation */
+    .mobile-nav-link.active {
+        color: var(--primary);
+        background: rgba(139,92,246,0.15);
+    }
+
+    .mobile-nav-link.active i {
+        transform: translateY(-3px) scale(1.1);
+    }
+
+    .mobile-nav-link:active {
+        transform: scale(.90);
+    }
+
+    /* Prevent content hiding behind navbar */
+    body {
+        padding-bottom: 110px;
+    }
+
+    /* Smooth section navigation */
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .mobile-bottom-nav {
+        bottom: 12px;
+        width: calc(100% - 20px);
+        min-height: 66px;
+    }
+
+    .mobile-nav-link {
+        min-width: 48px;
+        padding: 8px 5px;
+    }
+
+    .mobile-nav-link i {
+        font-size: 17px;
+    }
+
+    .mobile-nav-link span {
+        font-size: 9px;
+    }
+}

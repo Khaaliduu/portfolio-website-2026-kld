@@ -436,3 +436,68 @@ Sent from Khaalid CodeCraft Portfolio.
     inquiryForm.reset();
 
 });
+
+
+
+
+
+
+/*=========================================
+  MOBILE BOTTOM NAVIGATION
+=========================================*/
+
+const mobileNavLinks = document.querySelectorAll('.mobile-bottom-nav .nav-link');
+
+const mobileSections = document.querySelectorAll(
+    '#home, #about, #skills, #projects, #contact'
+);
+
+const mobileNavObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                const currentId = entry.target.getAttribute('id');
+
+                mobileNavLinks.forEach(link => {
+
+                    link.classList.remove('active');
+
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+
+                });
+
+            }
+
+        });
+
+    },
+    {
+        rootMargin: '-25% 0px -55% 0px',
+        threshold: 0
+    }
+);
+
+mobileSections.forEach(section => {
+    mobileNavObserver.observe(section);
+});
+
+
+// Smooth navigation click
+mobileNavLinks.forEach(link => {
+
+    link.addEventListener('click', () => {
+
+        mobileNavLinks.forEach(item => {
+            item.classList.remove('active');
+        });
+
+        link.classList.add('active');
+
+    });
+
+});
