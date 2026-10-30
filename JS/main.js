@@ -336,3 +336,103 @@ projectCards.forEach((card,index)=>{
 
 
 
+
+
+
+
+/* =========================================
+   PRICING & WHATSAPP INQUIRY
+========================================= */
+
+const pricingButtons = document.querySelectorAll(".pricing-btn");
+const inquiryModal = document.getElementById("inquiryModal");
+const closeModal = document.getElementById("closeModal");
+const inquiryForm = document.getElementById("inquiryForm");
+
+const selectedPackage = document.getElementById("selectedPackage");
+const selectedPrice = document.getElementById("selectedPrice");
+
+let currentPackage = "";
+let currentPrice = "";
+
+
+// OPEN MODAL
+pricingButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        currentPackage = button.dataset.package;
+        currentPrice = button.dataset.price;
+
+        selectedPackage.textContent = currentPackage;
+        selectedPrice.textContent = currentPrice;
+
+        inquiryModal.showModal();
+
+    });
+
+});
+
+
+// CLOSE MODAL
+closeModal.addEventListener("click", () => {
+    inquiryModal.close();
+});
+
+
+// CLOSE WHEN CLICKING OUTSIDE
+inquiryModal.addEventListener("click", (event) => {
+
+    if (event.target === inquiryModal) {
+        inquiryModal.close();
+    }
+
+});
+
+
+// SEND PROJECT DETAILS TO WHATSAPP
+inquiryForm.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    const name = document.getElementById("clientName").value.trim();
+    const email = document.getElementById("clientEmail").value.trim();
+    const notes = document.getElementById("projectNotes").value.trim();
+
+    if (!name || !email || !notes) {
+        return;
+    }
+
+    const phoneNumber = "252614410521";
+
+    const message = `
+NEW PROJECT INQUIRY
+======================
+
+Package: ${currentPackage}
+Starting Price: ${currentPrice}
+
+CLIENT INFORMATION
+----------------------
+Name: ${name}
+Email: ${email}
+
+PROJECT DETAILS
+----------------------
+${notes}
+
+======================
+I would like to discuss this project with you.
+
+Sent from Khaalid CodeCraft Portfolio.
+`;
+
+    const whatsappURL =
+        `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, "_blank");
+
+    inquiryModal.close();
+    inquiryForm.reset();
+
+});
